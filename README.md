@@ -6,3 +6,6 @@ Demo: <code><a href="https://ishaanSh06.github.io/BlockNinja/">https://ishaanSh0
 
 state.game.score = score
 endGame()
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps

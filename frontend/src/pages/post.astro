@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const name = formData.get("name");
+  const comment = formData.get("comment");
+  console.log("Received post:", { name, comment });
+
+  await fetch("http://localhost:3211/", {
+    method: "POST",
+    body: JSON.stringify({ name, comment }),
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+}
+---
+
+<Layout ttitle="Create a Post">
+  <h1>This is a Post Page</h1>
+  <form method="POST">
+    <input placeholder="Masukkan Nama" name="name" />
+    <input placeholder="Masukkan Komentar" name="comment" />
+    <button type="submit">Create Post</button>
+  </form>
+</Layout>
