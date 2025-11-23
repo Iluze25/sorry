@@ -2,7 +2,7 @@
   "name": "sorry",
   "version": "1.0.0",
   "description": "A clone game of Fruit Ninja",
-  "main": "index.js",
+  "main": "/frontend/src/pages/index.astro",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "astro dev",
