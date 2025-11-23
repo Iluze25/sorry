@@ -1,0 +1,39 @@
+---
+// Props: endpoint dari backend
+const { endpoint } = Astro.props;
+
+let name = "";
+let comment = "";
+
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, comment }),
+  });
+
+  const data = await res.json();
+  console.log("POST response:", data);
+
+  name = "";
+  comment = "";
+}
+---
+
+<form on:submit={handleSubmit}>
+  <input
+    type="text"
+    placeholder="Name"
+    value={name}
+    on:input={(e) => (name = e.target.value)}
+    required
+  />
+  <textarea
+    placeholder="Comment"
+    value={comment}
+    on:input={(e) => (comment = e.target.value)}
+    required></textarea>
+  <button type="submit">Send</button>
+</form>

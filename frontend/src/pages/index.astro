@@ -1,0 +1,25 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/card.astro";
+
+const response = await fetch("https://backsorry-production.up.railway.app");
+const blogs = await response.json();
+console.log(blogs);
+---
+
+<Layout>
+  <BaseLayout
+    title="Personal Card Portfolio Astro"
+    description="Meta description. Here goes your page description. Provide a clear and concise summary of the content."
+  >
+    {
+      blogs.getData.data.map((blog) => {
+        console.log(blog);
+        return <Card name={blog.name} aboutMe={blog.comment} />;
+      })
+    }
+  </BaseLayout>
+</Layout>
